@@ -10,7 +10,20 @@
     </head>
     <body>
         <div id="boxy">
-            Podaj nick <input type="text" id="nick" /><br /><br /><input type="submit" value="Idź do chatu" name="text" onclick="start()" />
+            Podaj nick <input type="text" id="nick" />
+            <br /><br />
+            Wybierz avatar <button onclick="changeAvatar(0)">#1</button> <button onclick="changeAvatar(1)">#2</button><br />
+            Tak będzie się reprezentowało:<br />
+            <div style="margin-bottom: 20px;"></div>
+            <div class="boxA">
+                <div class="image" id="img"><img src="img/avatars/av1.jpg" width="45px" height="45px" class="image" /></div>
+                <div class="boxB">
+                    <div class="user">User</div>
+                    <div class="text">Witaj świecie!</div>
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;"></div>
+            <input type="submit" value="Idź do chatu" name="text" onclick="start()" class="pointer" />
             <div id="blad" style="color: red; margin-top: 10px;"></div>
         </div>
     </body>

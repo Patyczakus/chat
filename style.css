@@ -21,6 +21,11 @@ body {
     color: white;
     font-family: sans-serif;
     font-size: 20px;
+    cursor: default;
+}
+
+button, .pointer {
+    cursor: pointer;
 }
 
 #TEXT {
@@ -28,7 +33,7 @@ body {
     font-size: 20px;
 }
 
-input {
+input, button {
     background-color: rgb(80, 80, 80);
     animation-name: chatB;
     animation-duration: .3s;
@@ -38,20 +43,24 @@ input {
     font-size: 20px;
     font-family: sans-serif;
 }
-input:hover {
+input:hover:not(:disabled), button:hover:not(:disabled) {
     background-color: rgb(100, 100, 100);   
     animation-name: chatA;
     animation-duration: .3s;
 }
-input:focus {
+input:focus:not(:disabled), button:focus:not(:disabled) {
     border-bottom: wheat;
 }
+input:disabled, button:disabled {
+    background-color: black;
+}
+
 #pole {
     width: 94%;
 }
 .boxA {
     border-left: 7px double black;
-    height: 45px;
+    min-height: 45px;
     width: auto;
     margin-bottom: 5px;
 }
@@ -63,8 +72,21 @@ input:focus {
     padding-left: 5px;
 }
 .text {
-    height: 15px;
+    min-height: 15px;
     font-size: 13px;
     padding-left: 5px;
     font-weight: 550;
+}
+.boxB {
+    min-height: 45px;
+    float: left;
+}
+img.image {
+    border-radius: 100%;
+}
+div.image {
+    margin-left: 5px;
+    width: 45px;
+    height: 45px;
+    float: left;
 }
