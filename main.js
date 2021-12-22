@@ -11,15 +11,18 @@ const colors = [
 ]
 
 const images = [
-    "av1",
-    "av2"
+    "av1.jpg",
+    "av2.jpg",
+    "specjalAvatar.png",
+    "avByAntek1.jpg",
+    "avByAntek2.jpg",
 ]
 var avatarID = 0
 
 // ---------------------------------------------------------------------------
 
 function changeAvatar(number) {
-    document.getElementById("img").innerHTML = `<img src="img/avatars/${images[number]}.jpg" width="45px" height="45px" class="image">`
+    document.getElementById("img").innerHTML = `<img src="img/avatars/${images[number]}" width="45px" height="45px" class="image">`
     avatarID = number
 }
 
@@ -43,7 +46,7 @@ function send() {
     document.getElementById("pole").value = "";
     mainText += `
     <div class="boxA" style="border-left-color: ${colors[Math.floor(Math.random() * colors.length)]};">
-    <div class="image"><img src="img/avatars/${images[avatarID]}.jpg" width="45px" height="45px" class="image" /></div>
+    <div class="image"><img src="img/avatars/${images[avatarID]}" width="45px" height="45px" class="image" /></div>
     <div class="boxB">
         <div class="user">${username}</div>
         <div class="text">${text.join(" ")}</div>
