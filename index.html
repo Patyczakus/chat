@@ -6,7 +6,21 @@
         <meta name="description" content="[ Hello Worl| ] [ > ] " />
         <meta http-equiv="X-UA_Compatible" content="IE=edge,chrome=1" />
         <link rel="stylesheet" href="style.css" type="text/css" />
-        <script type="module" async src="firebase.js"></script>
+        <script type="module" async>
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+            import { getDatabase  } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+     
+            window.onload = () => {
+                var config = {
+                    apiKey: "AIzaSyBqt4RNoAbBRqDwmxJHJz79k62m6ZnZBmY",
+                    authDomain: "chat-e8253.firebaseapp.com",
+                    databaseURL: "https://databaseName.firebaseio.com",
+                    storageBucket: "chat-e8253.appspot.com"
+                };
+                const app = initializeApp(config);
+                console.log(getDatabase(app))
+            }
+        </script>
         <script src="main.js"></script>
     </head>
     <body>

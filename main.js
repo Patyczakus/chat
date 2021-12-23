@@ -1,6 +1,6 @@
 var mainText = ""
 
-var username
+var username, colorUserID, text
 
 const colors = [
     "purple",
@@ -17,8 +17,8 @@ const images = [
     "avByAntek1.jpg",
     "avByAntek2.jpg",
 ]
-var avatarID = 0
 
+var avatarID = 0
 // ---------------------------------------------------------------------------
 
 function changeAvatar(number) {
@@ -38,14 +38,15 @@ function start() {
 }
 
 function send() {
-    var text = document.getElementById("pole").value;
+    text = document.getElementById("pole").value;
     text = text.replace("<", "&lt;")
     text = text.split(/ +/g)
     if (!text[0] && !text[1]) return
     if (text.join(" ").length > 200) return document.getElementById("pole").value = "";
     document.getElementById("pole").value = "";
+    colorUserID = Math.floor(Math.random() * colors.length)
     mainText += `
-    <div class="boxA" style="border-left-color: ${colors[Math.floor(Math.random() * colors.length)]};">
+    <div class="boxA" style="border-left-color: ${colors[colorUserID]};">
     <div class="image"><img src="img/avatars/${images[avatarID]}" width="45px" height="45px" class="image" /></div>
     <div class="boxB">
         <div class="user">${username}</div>
@@ -53,5 +54,21 @@ function send() {
     </div>
     </div>
     `
+    sendFirebase(username, text.join(" "), colorUserID, avatarID)
     document.getElementById("TEXT").innerHTML = mainText
+}
+
+function sendFirebase(username, text, colorID, imageID) {
+    var postData = {
+        author: username,
+        text: text,
+        colorID: colorID,
+        imageID: imageID,
+    };
+  
+    // Write the new message
+    var updates = {};
+    updates['/message'] = postData;
+
+    return firebase.database().ref().update(updates);
 }
